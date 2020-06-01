@@ -2,8 +2,11 @@
 
 namespace UnfinishedStudios.MegaSprings
 {
+    [RequireComponent(typeof(Spring))]
     public class SpringBehaviour : MonoBehaviour
     {
+        public bool Disable;
+
         [Header("Spring")]
 
         public Vector3 Spring = new Vector3(0.5f, 0.5f, 0.5f);

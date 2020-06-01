@@ -19,8 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4042895264584526}
-  - component: {fileID: 114167516050932470}
-  - component: {fileID: 114070918369041530}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -38,6 +36,8 @@ GameObject:
   - component: {fileID: 4803134595382712}
   - component: {fileID: 33075341320231792}
   - component: {fileID: 23018350841746542}
+  - component: {fileID: 114174079953457482}
+  - component: {fileID: 114467948675783160}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 149250918fd701d4592d952fd17f297f, type: 3}
+  - {fileID: 2100000, guid: cc5409499428d9b4592c72e7679cbfcb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,17 +113,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472062176401968}
   m_Mesh: {fileID: 4300000, guid: 149250918fd701d4592d952fd17f297f, type: 3}
---- !u!114 &114070918369041530
+--- !u!114 &114174079953457482
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222021248448296}
+  m_GameObject: {fileID: 1472062176401968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63b73a9891b6e14880e8bfd5cdb187d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours: []
+--- !u!114 &114467948675783160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472062176401968}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d2dd419c656327439bf25f900662171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Disable: 0
   Spring: {x: 0.65, y: 0.5, z: 0.5}
   Damping: {x: 15, y: 15, z: 15}
   Velocities:
@@ -134,26 +147,12 @@ MonoBehaviour:
   - {x: 0, y: -0.2507464, z: 0}
   - {x: 0, y: -131.12569, z: 0}
   - {x: -0.049787678, y: -0.049787678, z: -0.049787678}
+  absoluteValues: 0
   speed:
   - {x: 0, y: 2, z: 0}
   - {x: 0, y: 1, z: 0}
   - {x: 2, y: 2, z: 2}
   amplitude:
-  - {x: 0, y: 0.25, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: 180, z: 0}
   - {x: 0.05, y: 0.05, z: 0.05}
-  steps:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
---- !u!114 &114167516050932470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222021248448296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63b73a9891b6e14880e8bfd5cdb187d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

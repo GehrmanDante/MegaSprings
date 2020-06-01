@@ -3,10 +3,20 @@ using System;
 
 namespace UnfinishedStudios.MegaSprings
 {
-    [RequireComponent(typeof(Spring))]
+    public enum WaveSetting
+    {
+        Default,
+        IgnoreZero,
+        Absolute,
+        Smooth
+    }
+
     public class WaveBehaviour : SpringBehaviour
     {
         [Header("Sine Wave")]
+
+        [SerializeField]
+        private WaveSetting setting;
 
         [SerializeField]
         private Vector3[] speed = new Vector3[3];
@@ -14,34 +24,52 @@ namespace UnfinishedStudios.MegaSprings
         [SerializeField]
         private Vector3[] amplitude = new Vector3[3];
 
-        [SerializeField]
-        private Vector3[] steps = new Vector3[3];
-
         private Vector3 Wave(int index)
         {
             //Save for cleaner code.
             Vector3 localAmplitude = amplitude[index];
             Vector3 localSpeed = speed[index];
-            Vector3 localStep = steps[index];
 
             //Calculate a sine wave.
             Vector3 value = Vector3.zero;
-            value.x = Step(Mathf.Sin(Time.time * localSpeed.x) * localAmplitude.x, localAmplitude.x, localStep.x);
-            value.y = Step(Mathf.Sin(Time.time * localSpeed.y) * localAmplitude.y, localAmplitude.y, localStep.y);
-            value.z = Step(Mathf.Sin(Time.time * localSpeed.z) * localAmplitude.z, localAmplitude.z, localStep.z);
+            value.x = Mathf.Sin(Time.time * localSpeed.x) * localAmplitude.x;
+            value.y = Mathf.Sin(Time.time * localSpeed.y) * localAmplitude.y;
+            value.z = Mathf.Sin(Time.time * localSpeed.z) * localAmplitude.z;
+
+            //Change how the value works depending on the setting.
+            switch (setting)
+            {
+                case WaveSetting.Default:
+                    value = Round(value, 0);
+                    break;
+                case WaveSetting.Absolute:
+                    value = Absolute(value);
+                    break;
+                default:
+                    break;
+            }
 
             return value;
         }
 
-        private float Step(float value, float amplitude, float localStep)
+        private Vector3 Round(Vector3 value, int digits)
         {
-            //No reason to calculate if amplitude is zero.
-            if(amplitude == 0 || localStep == 0)
-                return value;
+            Vector3 finalValue = value;
+            finalValue.x = (float)Math.Round(value.x, digits);
+            finalValue.y = (float)Math.Round(value.y, digits);
+            finalValue.z = (float)Math.Round(value.z, digits);
 
-            //Round.
-            float step = (float)(localStep / amplitude);
-            return (float)(Math.Round(value * step) / step);
+            return finalValue;
+        }
+
+        private Vector3 Absolute(Vector3 value)
+        {
+            Vector3 finalValue = value;
+            finalValue.x = Mathf.Abs(finalValue.x);
+            finalValue.y = Mathf.Abs(finalValue.y);
+            finalValue.z = Mathf.Abs(finalValue.z);
+
+            return finalValue;
         }
 
         public override Vector3 Move() { return Wave(0); }
