@@ -45,6 +45,9 @@ namespace UnfinishedStudios.MegaSprings
                 case WaveSetting.Absolute:
                     value = Absolute(value);
                     break;
+                // case WaveSetting.IgnoreZero:
+                //     value.y = (value.y > 0) ? Mathf.Ceil(value.y) : Mathf.Floor(value.y);
+                //     break;
                 default:
                     break;
             }
