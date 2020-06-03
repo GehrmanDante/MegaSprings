@@ -136,19 +136,15 @@ MonoBehaviour:
   - {x: 0, y: 0.19515947, z: 0}
   - {x: 1.4423985, y: 2e-44, z: 0}
   - {x: 1.4e-44, y: 0.078063786, z: 1.4e-44}
-  absoluteValues: 1
+  setting: 2
   speed:
   - {x: 0, y: 5, z: 0}
   - {x: 5, y: 0, z: 0}
   - {x: 0, y: -5, z: 2}
   amplitude:
-  - {x: 0, y: 0.5, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 5, y: 0, z: 0}
   - {x: 0, y: 0.2, z: 0}
-  steps:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
 --- !u!114 &114792472930894742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63b73a9891b6e14880e8bfd5cdb187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviours: []
+  behaviors: []
 --- !u!114 &114914247264139312
 MonoBehaviour:
   m_ObjectHideFlags: 1

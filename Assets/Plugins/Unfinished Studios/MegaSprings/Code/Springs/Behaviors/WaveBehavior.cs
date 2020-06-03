@@ -11,7 +11,7 @@ namespace UnfinishedStudios.MegaSprings
         Smooth
     }
 
-    public class WaveBehaviour : SpringBehaviour
+    public class WaveBehavior : SpringBehavior
     {
         [Header("Sine Wave")]
 
@@ -45,9 +45,9 @@ namespace UnfinishedStudios.MegaSprings
                 case WaveSetting.Absolute:
                     value = Absolute(value);
                     break;
-                // case WaveSetting.IgnoreZero:
-                //     value.y = (value.y > 0) ? Mathf.Ceil(value.y) : Mathf.Floor(value.y);
-                //     break;
+                case WaveSetting.IgnoreZero:
+                    value.y = (value.y > 0) ? localAmplitude.y : -localAmplitude.y;
+                    break;
                 default:
                     break;
             }

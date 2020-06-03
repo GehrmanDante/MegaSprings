@@ -2,7 +2,7 @@
 
 namespace UnfinishedStudios.MegaSprings
 {
-    public class CarBehaviour : ConstantBehaviour
+    public class CarBehavior : ConstantBehavior
     {
         [SerializeField]
         private Transform rotator;

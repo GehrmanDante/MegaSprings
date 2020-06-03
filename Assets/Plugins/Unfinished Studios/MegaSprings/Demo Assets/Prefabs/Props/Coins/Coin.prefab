@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63b73a9891b6e14880e8bfd5cdb187d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviours: []
+  behaviors: []
 --- !u!114 &114467948675783160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,12 +147,12 @@ MonoBehaviour:
   - {x: 0, y: -0.2507464, z: 0}
   - {x: 0, y: -131.12569, z: 0}
   - {x: -0.049787678, y: -0.049787678, z: -0.049787678}
-  absoluteValues: 0
+  setting: 1
   speed:
   - {x: 0, y: 2, z: 0}
   - {x: 0, y: 1, z: 0}
   - {x: 2, y: 2, z: 2}
   amplitude:
-  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 0.5, z: 0}
   - {x: 0, y: 180, z: 0}
   - {x: 0.05, y: 0.05, z: 0.05}

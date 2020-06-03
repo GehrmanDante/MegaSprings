@@ -3,7 +3,7 @@
 namespace UnfinishedStudios.MegaSprings
 {
     [RequireComponent(typeof(Spring))]
-    public class SpringBehaviour : MonoBehaviour
+    public class SpringBehavior : MonoBehaviour
     {
         public bool Disable;
 

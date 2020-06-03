@@ -6,7 +6,7 @@ namespace UnfinishedStudios.MegaSprings
     {
         [ReadOnly]
         [SerializeField]
-        private SpringBehaviour[] behaviours;
+        private SpringBehavior[] behaviors;
 
         private Vector3[] restTransform = new Vector3[3];
 
@@ -18,31 +18,20 @@ namespace UnfinishedStudios.MegaSprings
             restTransform[2] = transform.localScale;
 
             //Get all the spring behaviours.
-            behaviours = GetComponents<SpringBehaviour>();
+            behaviors = GetComponents<SpringBehavior>();
         }
 
         private void Update()
         {
+            //Calculate the new transform by adding transforms from each behavior.
             Vector3[] newTransform = new Vector3[3];
-            for (int i = 0; i < behaviours.Length; i++)
+            Loops.ForEach(behaviors, (behavior) =>
             {
-                SpringBehaviour behaviour = behaviours[i];
-                if (behaviour.Disable)
-                    continue;
-
-                //Add the new velocities.
-                Vector3[] velocities = behaviour.Velocities;
-                velocities[0] += behaviour.Move();
-                velocities[1] += behaviour.Rotate();
-                velocities[2] += behaviour.Scale();
-
-                //Add to the new transform.
-                Solve(behaviour);
-                Vector3[] values = behaviour.Values;
+                Vector3[] values = UpdateBehavior(behavior);
                 newTransform[0] += values[0];
                 newTransform[1] += values[1];
                 newTransform[2] += values[2];
-            }
+            });
 
             //Apply the new transform.
             transform.localPosition = restTransform[0] + newTransform[0];
@@ -50,20 +39,36 @@ namespace UnfinishedStudios.MegaSprings
             transform.localScale = restTransform[2] + newTransform[2];
         }
 
-        private void Solve(SpringBehaviour behaviour)
+        private Vector3[] UpdateBehavior(SpringBehavior behavior)
+        {
+            if (behavior.Disable)
+                return new Vector3[3];
+
+            //Add the new velocities.
+            Vector3[] velocities = behavior.Velocities;
+            velocities[0] += behavior.Move();
+            velocities[1] += behavior.Rotate();
+            velocities[2] += behavior.Scale();
+
+            //Add to the new transform.
+            Solve(behavior);
+            return behavior.Values;
+        }
+
+        private void Solve(SpringBehavior behavior)
         {
             //Calculate the new velocities.
             for (int i = 0; i < 3; i++)
             {
-                Vector3 velocity = behaviour.Velocities[i];
-                Vector3 value = behaviour.Values[i];
+                Vector3 velocity = behavior.Velocities[i];
+                Vector3 value = behavior.Values[i];
 
                 //Calculate the new velocity and value.
-                velocity = (velocity - value) * behaviour.Spring[i];
-                value += velocity * Time.deltaTime * behaviour.Damping[i];
+                velocity = (velocity - value) * behavior.Spring[i];
+                value += velocity * Time.deltaTime * behavior.Damping[i];
 
-                behaviour.Velocities[i] = velocity;
-                behaviour.Values[i] = value;
+                behavior.Velocities[i] = velocity;
+                behavior.Values[i] = value;
             }
         }
     }

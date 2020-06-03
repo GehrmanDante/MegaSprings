@@ -2,7 +2,7 @@
 
 namespace UnfinishedStudios.MegaSprings
 {
-    public class ConstantBehaviour : SpringBehaviour
+    public class ConstantBehavior : SpringBehavior
     {
         [Header("Movement Settings")]
 
