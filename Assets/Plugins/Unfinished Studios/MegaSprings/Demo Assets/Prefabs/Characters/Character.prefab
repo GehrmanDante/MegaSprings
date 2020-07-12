@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7d110987322dc46998102f07e71fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Disable: 0
+  Disable: 1
   Spring: {x: 0.5, y: 0.5, z: 0.5}
   Damping: {x: 15, y: 15, z: 15}
   Velocities:
